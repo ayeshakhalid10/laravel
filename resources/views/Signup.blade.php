@@ -12,19 +12,24 @@
 
 <body class="bg-white font-body">
     <div class="flex justify-start">
-        <img class="h-screen w-[65rem] " src="{{ Vite::asset('/resources/images/Login.png') }}" alt="image description">
-        <div class="flex flex-col max-w-[40rem] mx-auto w-full">
+        <a href="HomePage"> 
+            <img class="hidden md:block h-screen w-[65rem] " src="{{ Vite::asset('/resources/images/Login.png') }}" alt="image description">
+        </a>
+        <div class="flex flex-col max-w-xs md:max-w-[40rem] mx-auto w-full">
+            <a href="HomePage" class="block md:hidden text-center pt-10 text-2xl font-bold">
+                AutoCare Finder
+            </a>
             <div class="flex justify-between mt-20">
                 <a href="{{route('Login')}}"
-                    class=" w-fit h-fit cursor-pointer p-3 border-b-[0.5rem] rounded-sm  text-gray-400 hover:text-black border-gray-400 hover:border-[#F37335] transition-all font-bold text-4xl uppercase">
+                    class=" w-fit h-fit cursor-pointer p-3 border-b-[0.5rem] rounded-sm  text-gray-400 hover:text-black border-gray-400 hover:border-[#F37335] transition-all font-bold text-xl md:text-4xl uppercase">
                     Login
                 </a>
                 <div
-                    class=" w-fit h-fit p-3 border-b-[0.5rem] text-black rounded-sm border-[#F37335] transition-all font-bold text-4xl uppercase">
+                    class=" w-fit h-fit p-3 border-b-[0.5rem] text-black rounded-sm border-[#F37335] transition-all font-bold text-xl md:text-4xl uppercase">
                     Signup
                 </div>
             </div>
-            <div class="font-extrabold text-5xl text-center mt-20">
+            <div class="font-extrabold text-2xl md:text-5xl text-center mt-20">
                 Create your Account
             </div>
             <div class="text-gray-500 font-bold text-center my-3">
@@ -36,7 +41,7 @@
                 <div class="mt-10">
                     <label for="Email" class="block mb-2 text-lg font-bold text-gray-900 ">Email</label>
                     <input type="text" id="email" name="email"
-                        class="bg-transparent border-b-[0.25rem] rounded-sm border-black text-gray-900 text-sm block w-[35rem] p-2.5 
+                        class="bg-transparent border-b-[0.25rem] rounded-sm border-black text-gray-900 text-sm block w-full md:w-[35rem] p-2.5 
                         @error('email') border-red-500 @enderror" value="{{old('email')}}">
 
                     @error('email')
@@ -48,7 +53,7 @@
                 <div class="mt-10">
                     <label for="passowrd" class="block mb-2 text-lg font-bold text-gray-900 ">Password</label>
                     <input type="password" id="password" name="password"
-                        class="bg-transparent border-b-[0.25rem] border-black text-gray-900 text-sm block w-[35rem] p-2.5  
+                        class="bg-transparent border-b-[0.25rem] border-black text-gray-900 text-sm block w-full md:w-[35rem] p-2.5  
                         @error('password') border-red-500 @enderror">
 
                     @error('password')
@@ -61,7 +66,7 @@
                     <label for="confirmpassword" class="block mb-2 text-lg font-bold text-gray-900 ">Confirm
                         Password</label>
                     <input type="password" id="password_confirmation" name="password_confirmation"
-                        class="bg-transparent border-b-[0.25rem] border-black text-gray-900 text-sm block w-[35rem] p-2.5
+                        class="bg-transparent border-b-[0.25rem] border-black text-gray-900 text-sm block w-full md:w-[35rem] p-2.5
                         @error('password_confirm') border-red-500 @enderror">
 
                     @error('password_confirmation')
@@ -72,7 +77,7 @@
                 </div>
                 <div class="flex justify-center mt-20">
                     <button type="submit"
-                        class="bg-[#FCE116] hover:bg-[#d3c030] text-black uppercase font-extrabold py-4 px-14 shadow-lg hover:shadow-xl rounded-xl text-4xl transition-all">
+                        class="bg-[#FCE116] hover:bg-[#d3c030] text-black uppercase font-extrabold py-4 px-14 shadow-lg hover:shadow-xl rounded-xl text-2xl md:text-4xl transition-all">
                         Signup
                     </button>
                 </div>

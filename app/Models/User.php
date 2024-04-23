@@ -46,4 +46,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(ShopRegister::class);
     }
+
+    public function store()
+    {
+        return $this->hasOne(StoreMod::class);
+    }
+
 }

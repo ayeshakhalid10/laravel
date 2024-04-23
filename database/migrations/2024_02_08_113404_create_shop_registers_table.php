@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('location');
             $table->string('description');
             $table->string('number')->unique();
-            $table->string('availability');
-            $table->string('instagram');
-            $table->string('facebook');
+            $table->string('availability')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
             // $table->string('image')->nullable();
             $table->timestamps();
         });

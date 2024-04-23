@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('modifications', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('type');
-            $table->string('description');
-            $table->string('quantity');
-            $table->timestamps();
+        Schema::table('storemod', function (Blueprint $table) {
+            $table->string('image');
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('modifications');
+        Schema::table('storemod', function (Blueprint $table) {
+            $table->dropColumn('image');
+        });
     }
 };

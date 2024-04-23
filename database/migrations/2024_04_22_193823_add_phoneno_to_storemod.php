@@ -11,15 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('shop_registers', function (Blueprint $table) {
-            $table->string('instagram')->nullable();
+        Schema::table('storemod', function (Blueprint $table) {
+            $table->string('phoneno');
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::table('shop_registers', function (Blueprint $table) {
-            $table->dropColumn('instagram');
+        Schema::table('storemod', function (Blueprint $table) {
+            $table->dropColumn('phoneno');
         });
     }
 };

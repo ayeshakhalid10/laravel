@@ -1,10 +1,10 @@
-<div class="bg-[#28282B] w-full h-[40rem] py-10">
-    <div class="max-w-[100rem] mx-auto ">
+<div class="bg-[#28282B] w-full h-fit md:h-[40rem] py-10">
+    <div class="max-w-xs md:max-w-md lg:max-w-[100rem] mx-auto ">
         <div class="text-start text-3xl font-bold text-[#FCE116] mb-10">
             AutoCare Finder
         </div>
         <div class="w-full border-b-2 border-t-2 border-white py-[4.5rem] ">
-            <div class="flex justify-between">
+            <div class="flex flex-col gap-y-5 md:flex-row justify-between">
                 <div class="flex flex-col gap-y-5">
                     <div class="text-white font-bold">
                         About us
@@ -21,13 +21,13 @@
                     <div class="text-white font-bold">
                         Quick Links
                     </div>
-                    <div class="text-gray-400">
+                    <div class="text-gray-400 hover:text-white transition-all cursor-pointer">
                         Home
                     </div>
-                    <div class="text-gray-400">
+                    <div class="text-gray-400 hover:text-white transition-all cursor-pointer">
                         Car List
                     </div>
-                    <div class="text-gray-400">
+                    <div class="text-gray-400 hover:text-white transition-all cursor-pointer">
                         Register Your Car
                     </div>
                     <div x-data="{ showTooltip: false }" class="relative">
@@ -88,8 +88,8 @@
             </div>
         </div>
     </div>
-    <div class="flex justify-center text-white font-bold gap-x-2 pt-5">
-        <div>
+    <div class="flex justify-center text-xs md:text-base text-white font-bold gap-x-2 pt-5 items-center">
+        <div >
             Copyright
         </div>
         <div>

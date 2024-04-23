@@ -13,11 +13,15 @@ class Modification extends Model
         'name',
         'type',
         'description',
-        'quantity',
-        // 'image',
+        'image',
+        'store_mod_id'
     ];
     
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function store() {
+        $this->belongsTo(StoreMod::class, 'store_mod_id');
     }
 }

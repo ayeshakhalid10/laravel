@@ -3,36 +3,44 @@
 namespace App\Http\Controllers;
 
 use App\Models\Modification;
+use App\Models\StoreMod;
 use Illuminate\Http\Request;
 
 class ModificationController extends Controller
 {
     public function index()
     {
-        $modification = Modification::get();
-        return view('Modification', [
-            'modification' => $modification,
-            'user'=> auth()->user()
+        $modifications = Modification::get();
+        return view('modification.index', [
+            'modifications' => $modifications,
         ]);
     }
 
-    public function store(Request $request)
-    {    
+    public function filter(string $type) {
+        $modifications = Modification::where("type", $type)->get();
+        $type = ucfirst($type);
+        return view('modifications.filtered', compact('modifications', 'type'));
+    }
+
+    public function store(Request $request, StoreMod $store)
+    {
         $this->validate($request, [
             'name' => 'required',
-            'type' => 'required',
             'description' => 'required',
-            'quantity' => 'required',
-            // 'image' => 'required', // Add validation for image upload
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'type' => 'required',
         ]);
-        ShopRegister::create([
+
+        $path = $request->image->store("public");
+
+        $modification = Modification::create([
             'user_id' => auth()->id(),
             'name' => $request->name,
-            'type' => $request->location,
             'description' => $request->description,
-            'quantity' => $request->availability,
-            // 'image' => $request->image,
+            'type' => $request->type,
+            'image' => $path,
+            'store_mod_id' => $store->id
         ]);
-        return redirect()->route('Modification');
+        return redirect()->route('stores.show', ['store' => $store->id]);
     }
 }

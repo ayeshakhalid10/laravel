@@ -1,10 +1,9 @@
 <x-guest-layout>
-    <div class="max-w-[100rem] py-28 mx-auto">
-
+    <div class="max-w-xs md:max-w-[100rem] py-28 mx-auto">
         <form method="POST" action="{{ route('shop.update.submit', $shop->id) }}">
             @csrf
             @method('PUT')
-            <div class="flex gap-x-10">
+            <div class="flex flex-col md:flex-row gap-y-4 gap-x-10">
                 <div class="flex flex-col gap-y-2">
                     <div class="font-medium text-xl">
                         Name
@@ -18,10 +17,10 @@
                         Description
                     </div>
                     <textarea name="description"
-                        class="block px-4 py-4 w-60 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-xl shadow-xl focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">{{ $shop->description }}</textarea>
+                        class="block px-4 py-4 w-80 text-gray-600 placeholder-gray-400 bg-white border border-gray-200 rounded-xl shadow-xl focus:border-indigo-400 focus:outline-none focus:ring focus:ring-indigo-300 focus:ring-opacity-40 ">{{ $shop->description }}</textarea>
                 </div>
             </div>
-            <div class="flex gap-x-10 mt-4">
+            <div class="flex flex-col md:flex-row gap-y-4 gap-x-10 mt-4">
 
                 <div class="flex flex-col gap-y-2">
                     <div class="font-medium text-xl">

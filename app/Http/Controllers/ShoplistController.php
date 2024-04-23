@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ShoplistController extends Controller
 {
-public function index()
+    public function index()
     {
         $shoplist = ShopRegister::all();
         return view('Workshoplist', compact('shoplist'));

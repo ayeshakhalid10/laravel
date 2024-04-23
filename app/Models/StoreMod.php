@@ -5,22 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ShopRegister extends Model
+class StoreMod extends Model
 {
     use HasFactory;
-    protected $fillable =[
+    protected $table="storemod";
+
+    protected $fillable = [
         'user_id',
         'name',
-        'location',
-        'description',
-        'number',
-        'instagram',
-        'facebook',
-        'availability',
+        'address',
         'image',
+        'phoneno',
     ];
     
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function modifications() {
+        return $this->hasMany(Modification::class, 'store_mod_id');
     }
 }

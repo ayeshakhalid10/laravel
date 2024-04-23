@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="relative">
+    <div class="hidden md:block relative">
         <img class="h-screen w-screen " src="{{ Vite::asset('/resources/images/main2.png') }}" alt="image description">
         <div class="absolute top-[15rem] left-[10rem] ">
             <div class="w-[50rem] text-6xl font-extrabold text-white">
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="absolute top-[38rem] left-[10rem] ">
-            <a href="Register"
+            <a href="{{ route('register') }}"
                 class="bg-[#FCE116] hover:bg-black text-black hover:text-white font-bold py-4 px-32 shadow-lg hover:shadow-xl rounded-xl text-xl transition-all">
                 Register your workshop
             </a>
@@ -24,25 +24,49 @@
             @include('components.search')
         </div>
     </div>
+    <div class="block md:hidden bg-gray-200 py-20" style="background-image: url('{{ Vite::asset('/resources/images/main.png') }}'); background-size: cover; background-position: center;">
+        <div class="flex flex-col gap-y-4 text-center px-10 w-full">
+            <div class="text-2xl font-extrabold">
+                Streamlining the Path
+                to Uncover the Perfect
+                Upgrades for Your Vehicle
+            </div>
+            <div class="text-sm">
+                Effortlessly pinpoint the ideal car for you with our streamlined search approach. Find your perfect
+                match. 
+            </div>
+            <div class="flex flex-col gap-y-6 w-full mb-10">
+                    <div class="w-full">
+                        <a href="{{ route('register') }}"
+                            class="bg-[#FCE116] w-full text-black hover:text-white uppercase font-extrabold py-2 px-10 shadow-xl rounded-md text-base transition-all">
+                            Register your workshop
+                        </a>
+                    </div>
+            </div>
+            <div>
+                @include('components.search')
+            </div>
+        </div>
+    </div>
     <div class="bg-gray-200">
-        <div class="max-w-[100rem] pt-80 pb-20 mx-auto ">
+        <div class="max-w-xs md:max-w-[100rem] pt-20 md:pt-80 pb-20 mx-auto ">
             <div class="flex justify-center text-center">
-                <div class="text-5xl font-bold ">
+                <div class="text-2xl md:text-5xl font-bold ">
                     Featured Workshops
-                    <hr class="h-[0.10rem] w-[30rem] my-8 border-0 bg-gray-700">
+                    <hr class="h-[0.10rem] w-full md:w-[30rem] my-8 border-0 bg-gray-700">
                 </div>
             </div>
-            <div class="w-full h-[22rem] shadow-2xl rounded-lg px-8 border border-gray-200 mb-8">
-                <div class="flex justify-start gap-x-10">
+            <div class="w-full h-fit md:h-[22rem] shadow-2xl rounded-lg px-8 border border-gray-200 mb-8">
+                <div class="flex flex-col md:flex-row justify-start gap-x-10">
                     <div class="flex pt-9">
                             <img class="h-[18rem] w-fit" src="{{ Vite::asset('/resources/images/workshop2.jpg') }}"
                                 alt="Image description">
                     </div>
                     <div class="flex flex-col py-12 gap-y-4 pr-12 w-[70rem]">
-                        <div class="text-4xl font-bold">
+                        <div class="text-2xl md:text-4xl font-bold">
                             Auto Zone
                         </div>
-                        <div class="flex justify-start w-full font-medium text-black text-lg w-full">
+                        <div class="hidden md:flex justify-start font-medium text-black text-sm md:text-lg  md:w-full">
                             An AutoZone center is a professional automotive service facility offering a range of maintenance and repair services for cars. From routine tasks like oil changes and tire rotations to complex repairs, skilled technicians equipped with advanced tools provide efficient and reliable service to keep vehicles running smoothly. With transparent pricing. 
                         </div>
                         <div class="flex gap-x-4 items-center ">
@@ -70,10 +94,10 @@
                                 +923345527774
                             </div>
                         </div>
-                        <div class="flex justify-end w-full">
+                        <div class="flex justify-end w-fit md:w-full">
                             {{-- <a href="{{ route('Shopdetail', ['Shopdetail' => $item]) }}" type="submit" --}}
                             <a href=""
-                                class="bg-[#FCE116] hover:bg-black text-black hover:text-white uppercase font-extrabold py-2 px-28 shadow-lg hover:shadow-xl rounded-xl text-xl transition-all">
+                                class="bg-[#FCE116] hover:bg-black text-black hover:text-white uppercase font-extrabold py-2 px-10 md:px-28 shadow-lg hover:shadow-xl rounded-xl text-lg md:text-xl transition-all">
                                 See Details
                             </a>
                         </div>
@@ -82,16 +106,15 @@
                 </div>
 
             </div>
-            
             @foreach ($shoplist as $item)
-                <div class="w-full h-[22rem] shadow-2xl rounded-lg px-8 border border-gray-200 mb-8">
-                    <div class="flex justify-start gap-x-10">
+                <div class="w-full h-fit md:h-[22rem] shadow-2xl rounded-lg px-8 border border-gray-200 mb-8">
+                    <div class="flex flex-col md:flex-row justify-start gap-x-10">
                         <div class="flex pt-9">
                             @if ($item->image)
                                 <img class="h-[18rem] w-fit" src="{{ Storage::url($item->image) }}"
                                     alt="Image description">
                             @else
-                                <img class="h-[18rem] w-fit" src="{{ Vite::asset('/resources/images/workshop.png') }}"
+                                <img class="h-fit md:h-[18rem] w-fit" src="{{ Vite::asset('/resources/images/workshop.png') }}"
                                     alt="Placeholder image">
                             @endif
                         </div>
@@ -99,7 +122,7 @@
                             <div class="text-4xl font-bold">
                                 {{ $item->name }}
                             </div>
-                            <div class="flex justify-start w-full font-medium text-black text-lg">
+                            <div class="hidden md:flex justify-start w-fit md:w-full font-medium text-black text-lg">
                                 {{ $item->description }}
                             </div>
                             <div class="flex gap-x-4 items-center ">
@@ -127,19 +150,18 @@
                                     {{ $item->number }}
                                 </div>
                             </div>
-                            <div class="flex justify-end w-full">
-                                <a href="{{ route('Shopdetail', ['Shopdetail' => $item]) }}" type="submit"
-                                    class="bg-[#FCE116] hover:bg-black text-black hover:text-white uppercase font-extrabold py-2 px-28 shadow-lg hover:shadow-xl rounded-xl text-xl transition-all">
+                            <div class="flex justify-end w-fit md:w-full">
+                                <a href="{{ route('Shopdetail', ['Shopdetail' => $item]) }}"
+                                    class="bg-[#FCE116] hover:bg-black text-black hover:text-white uppercase font-extrabold py-2 px-10
+                                    md:px-28 shadow-lg hover:shadow-xl rounded-xl text-xl transition-all">
                                     See Details
                                 </a>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             @endforeach
-            <div class="w-full h-[22rem] shadow-2xl rounded-lg px-8 border border-gray-200 mb-8">
+            {{-- <div class="w-full h-[22rem] shadow-2xl rounded-lg px-8 border border-gray-200 mb-8">
                 <div class="flex justify-start gap-x-10">
                     <div class="flex pt-9">
                             <img class="h-[18rem] w-fit" src="{{ Vite::asset('/resources/images/w4.jpg') }}"
@@ -178,25 +200,20 @@
                             </div>
                         </div>
                         <div class="flex justify-end w-full">
-                            {{-- <a href="{{ route('Shopdetail', ['Shopdetail' => $item]) }}" type="submit" --}}
                             <a href=""
                                 class="bg-[#FCE116] hover:bg-black text-black hover:text-white uppercase font-extrabold py-2 px-28 shadow-lg hover:shadow-xl rounded-xl text-xl transition-all">
                                 See Details
                             </a>
                         </div>
-
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="flex justify-center mt-14">
-
                 <a href=""
-                    class="bg-gradient-to-r from-[#FDC830] to-[#F37335] hover:bg-black text-black hover:text-white font-bold py-4 px-28 shadow-lg hover:shadow-xl rounded-xl text-2xl transition-all">
+                    class="bg-gradient-to-r from-[#FDC830] to-[#F37335] hover:bg-black text-black hover:text-white font-bold py-4 px-10 md:px-28 shadow-lg hover:shadow-xl rounded-xl text-xl md:text-2xl transition-all">
                     See more
                 </a>
-
             </div>
         </div>
     </div>
-
 </x-guest-layout>

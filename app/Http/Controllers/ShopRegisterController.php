@@ -26,8 +26,13 @@ class ShopRegisterController extends Controller
             'instagram' => 'required',
             'facebook' => 'required',
             'availability' => 'required',
-            // 'image' => 'required', // Add validation for image upload
+            'image' => 'required}',
         ]);
+
+        dd($request->image);
+
+        $path = $request->image->store('public');
+
         ShopRegister::create([
             'user_id' => auth()->id(),
             'name' => $request->name,
@@ -37,9 +42,9 @@ class ShopRegisterController extends Controller
             'instagram' => $request->instagram,
             'facebook' => $request->facebook,
             'availability' => $request->availability,
-            // 'image' => $request->image,
+            'image' => $path,
         ]);
-        return redirect()->route('Workshoplist');
+        return redirect()->route('workshops');
     }
     
 
@@ -62,7 +67,7 @@ class ShopRegisterController extends Controller
         ]);
     
         $shop->update($validatedData);
-    
+
         return redirect()->route('Workshoplist')->with('success', 'Shop details updated successfully!');
     }
 
@@ -78,10 +83,8 @@ class ShopRegisterController extends Controller
     {
         $query = $request->input('name');
 
-        // Perform the search query
         $shops = ShopRegister::where('name', 'like', '%' . $query . '%')->get();
 
-        // Pass the search results to the view
         return view('search', ['shops' => $shops]);
     }
     

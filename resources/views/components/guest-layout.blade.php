@@ -12,7 +12,7 @@
     <link href="https://fonts.bunny.net/css" rel="stylesheet" />
 </head>
 
-<body class="bg-white">
+<body class="bg-white overflow-x-hidden">
     @include('components.header')
     {{ $slot }}
     @include('components.footer')
